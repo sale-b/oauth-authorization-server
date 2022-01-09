@@ -1,0 +1,27 @@
+server:
+  port: 8090
+  ssl:
+    enabled: true
+    key-store-type: PKCS12
+    key-store: classpath:keystore/keystore.p12
+    key-store-password: changeit
+    protocol: TLS
+    enabled-protocols: TLSv1.3
+    key-alias: resource
+    trust-store: classpath:keystore/truststore.p12
+    trust-store-password: changeit
+    trust-store-type: PKCS12
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.springframework.security.oauth2: INFO
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://auth-server:9000

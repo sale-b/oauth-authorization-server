@@ -1,0 +1,45 @@
+server:
+  port: 8081
+  ssl:
+    enabled: true
+    key-store-type: PKCS12
+    key-store: classpath:keystore/keystore.p12
+    key-store-password: changeit
+    protocol: TLS
+    enabled-protocols: TLSv1.3
+    key-alias: client
+    trust-store: classpath:keystore/truststore.p12
+    trust-store-password: changeit
+    trust-store-type: PKCS12
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.springframework.security.oauth2: INFO
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          books-client-oidc:
+            provider: spring
+            client-id: books-client
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirect-uri: "https://client-server:8081/login/oauth2/code/{registrationId}"
+            scope: openid
+            client-name: books-client-oidc
+          books-client-authorization-code:
+            provider: spring
+            client-id: books-client
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirect-uri: "https://client-server:8081/authorized"
+            scope: books.read
+            client-name: books-client-authorization-code
+        provider:
+          spring:
+            issuer-uri: https://auth-server:9000
