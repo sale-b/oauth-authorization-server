@@ -3,7 +3,7 @@
 This module demonstrates OAuth authorization flow using Spring Authorization Server, Spring OAuth Resource Server and
 Spring OAuth Client.
 
-- Run mvn install for all modules 
+- Run mvn install for the root module 
 - Run the Authorization Server from the `spring-authorization-server` module
     - IMPORTANT: Modify the `/etc/hosts` file and add the entry `127.0.0.1 auth-server` `127.0.0.1 client-server` `127.0.0.1 resource-server`
 - Run the Resource Server from `resource-server` module
